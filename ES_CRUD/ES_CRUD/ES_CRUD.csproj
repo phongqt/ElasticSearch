@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A419BC18-E3A3-46D5-9941-3547B7CAB5E3}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ES_CRUD</RootNamespace>
+    <AssemblyName>ES_CRUD</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Elasticsearch.Net, Version=1.0.0.0, Culture=neutral, PublicKeyToken=96c599bbe3e70f5d, processorArchitecture=MSIL">
+      <HintPath>..\packages\Elasticsearch.Net.1.4.2\lib\net45\Elasticsearch.Net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=96c599bbe3e70f5d, processorArchitecture=MSIL">
+      <HintPath>..\packages\NEST.1.4.2\lib\net45\Nest.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BLL\Customer.cs" />
+    <Compile Include="DTO\Aggregations.cs" />
+    <Compile Include="DTO\CombinedFilter.cs" />
+    <Compile Include="DTO\Customer.cs" />
+    <Compile Include="DAL\EsClient.cs" />
+    <Compile Include="DTO\Constants.cs" />
+    <Compile Include="DTO\RangeFilter.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="config\elasticsearch.yml" />
+    <None Include="config\logging.yml" />
+    <None Include="lib\sigar\libsigar-amd64-freebsd-6.so" />
+    <None Include="lib\sigar\libsigar-amd64-linux.so" />
+    <None Include="lib\sigar\libsigar-amd64-solaris.so" />
+    <None Include="lib\sigar\libsigar-ia64-linux.so" />
+    <None Include="lib\sigar\libsigar-sparc-solaris.so" />
+    <None Include="lib\sigar\libsigar-sparc64-solaris.so" />
+    <None Include="lib\sigar\libsigar-universal-macosx.dylib" />
+    <None Include="lib\sigar\libsigar-universal64-macosx.dylib" />
+    <None Include="lib\sigar\libsigar-x86-freebsd-5.so" />
+    <None Include="lib\sigar\libsigar-x86-freebsd-6.so" />
+    <None Include="lib\sigar\libsigar-x86-linux.so" />
+    <None Include="lib\sigar\libsigar-x86-solaris.so" />
+    <None Include="lib\sigar\sigar-x86-winnt.lib" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="README.textile" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="lib\antlr-runtime-3.5.jar" />
+    <Content Include="lib\asm-4.1.jar" />
+    <Content Include="lib\asm-commons-4.1.jar" />
+    <Content Include="lib\elasticsearch-1.4.2.jar" />
+    <Content Include="lib\groovy-all-2.3.2.jar" />
+    <Content Include="lib\jna-4.1.0.jar" />
+    <Content Include="lib\jts-1.13.jar" />
+    <Content Include="lib\log4j-1.2.17.jar" />
+    <Content Include="lib\lucene-analyzers-common-4.10.2.jar" />
+    <Content Include="lib\lucene-core-4.10.2.jar" />
+    <Content Include="lib\lucene-expressions-4.10.2.jar" />
+    <Content Include="lib\lucene-grouping-4.10.2.jar" />
+    <Content Include="lib\lucene-highlighter-4.10.2.jar" />
+    <Content Include="lib\lucene-join-4.10.2.jar" />
+    <Content Include="lib\lucene-memory-4.10.2.jar" />
+    <Content Include="lib\lucene-misc-4.10.2.jar" />
+    <Content Include="lib\lucene-queries-4.10.2.jar" />
+    <Content Include="lib\lucene-queryparser-4.10.2.jar" />
+    <Content Include="lib\lucene-sandbox-4.10.2.jar" />
+    <Content Include="lib\lucene-spatial-4.10.2.jar" />
+    <Content Include="lib\lucene-suggest-4.10.2.jar" />
+    <Content Include="lib\sigar\sigar-1.6.4.jar" />
+    <Content Include="lib\sigar\sigar-amd64-winnt.dll" />
+    <Content Include="lib\sigar\sigar-x86-winnt.dll" />
+    <Content Include="lib\spatial4j-0.4.1.jar" />
+    <Content Include="LICENSE.txt" />
+    <Content Include="NOTICE.txt" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
